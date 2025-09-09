@@ -21,11 +21,12 @@ const StudentProfileCard = () => {
   };
 
   return (
-    <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
-      <div className="flex items-start space-x-6">
+    <div className="bg-card border border-border rounded-lg p-4 sm:p-6 shadow-sm">
+      {/* Main container: column on mobile, row on small screens and up */}
+      <div className="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left sm:space-x-6">
         {/* Profile Image */}
-        <div className="flex-shrink-0">
-          <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/20">
+        <div className="flex-shrink-0 mb-6 sm:mb-0">
+          <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/20 mx-auto">
             <Image
               src={studentData?.profileImage}
               alt={studentData?.name}
@@ -46,11 +47,12 @@ const StudentProfileCard = () => {
 
         {/* Student Information */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground">{studentData?.name}</h2>
+          {/* Header section: stacks on mobile */}
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
+            <div className="mb-4 sm:mb-0">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground">{studentData?.name}</h2>
               <p className="text-muted-foreground mt-1">{studentData?.course}</p>
-              <div className="flex items-center space-x-4 mt-2">
+              <div className="flex items-center justify-center sm:justify-start space-x-4 mt-2">
                 <span className="text-sm text-muted-foreground">
                   {studentData?.semester} • {studentData?.year}
                 </span>
@@ -60,13 +62,13 @@ const StudentProfileCard = () => {
               </div>
             </div>
             
-            <div className="text-right">
+            <div className="text-center sm:text-right">
               <div className="text-sm text-muted-foreground">Student ID</div>
               <div className="font-mono text-foreground">{studentData?.id}</div>
             </div>
           </div>
 
-          {/* Contact Information */}
+          {/* Contact Information: already responsive */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -74,7 +76,7 @@ const StudentProfileCard = () => {
               </div>
               <div>
                 <div className="text-xs text-muted-foreground">Email</div>
-                <div className="text-sm text-foreground">{studentData?.email}</div>
+                <div className="text-sm text-foreground break-all">{studentData?.email}</div>
               </div>
             </div>
             
